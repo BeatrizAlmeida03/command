@@ -1,25 +1,26 @@
 package org.example;
 
 public class StringBar extends Bar{
-    private StringBar bar;
-    public StringBar() {
-        this.bar = bar;
-    }
+    private boolean happy = false;
 
     @Override
     public boolean isHappyHour() {
-        if (bar.isHappyHour())
-            return true;
-        return false;
+        return happy;
     }
 
     @Override
     public void startHappyHour() {
-        bar.startHappyHour();
+        happy = true;
+        notifyObservers();
     }
 
     @Override
     public void endHappyHour() {
-        bar.endHappyHour();
+        happy = false;
+        notifyObservers();
+    }
+
+    public void order(StringDrink drink, StringRecipe recipe){
+        recipe.mix(drink);
     }
 }
